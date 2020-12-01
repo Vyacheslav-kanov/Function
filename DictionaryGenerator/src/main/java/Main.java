@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Введите предложение..");
         String offer = scan.nextLine();
-        String result = dictionaryGenerator.getString(DictionaryGenerator.sorter(DictionaryGenerator.getWordList(offer)));
+        String result = dictionaryGenerator.getWordList(offer);
         System.out.println(result);
     }
 }
