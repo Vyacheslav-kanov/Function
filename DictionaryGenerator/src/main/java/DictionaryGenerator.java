@@ -1,14 +1,14 @@
 import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
-public class DictionaryGenerator {//Я использовал детерминированные методы и так как это функции они возвращают значения
+public class DictionaryGenerator {//Для реализации я использовал только Stream
 
     public static String getWordList(String offer) {
-        StringBuilder builder = new StringBuilder();
-        Stream<String> toSet = Arrays.stream(offer.split(" "));
-        toSet
-                .filter(x -> !(builder.toString().contains(x)))
-                .forEach(x -> builder.append(x + "\n"));
-        return builder.toString();
+        return Arrays.stream(offer.split(" "))
+                .map(x -> x.toLowerCase())
+                .distinct()
+                .sorted(String::compareTo)
+                .map((x) -> x + "\n")
+                .collect(Collectors.joining());
     }
 }
